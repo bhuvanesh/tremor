@@ -11,13 +11,13 @@ export default function KpiCard() {
           <Text>Sales</Text>
           <Metric>$ 12,699</Metric>
         </div>
-        <BadgeDelta deltaType="moderateIncrease">13.2%</BadgeDelta>
+        <BadgeDelta deltaType="moderateIncrease" className="bg-green-100">13.2%</BadgeDelta>
       </Flex>
       <Flex className="mt-4">
         <Text className="truncate">68% ($ 149,940)</Text>
         <Text>$ 220,500</Text>
       </Flex>
-      <ProgressBar value={15.9} className="mt-2" />
+      <ProgressBar value={15.9} className="mt-2" color="teal"/>
     </Card>
   );
 }

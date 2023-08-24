@@ -39,7 +39,7 @@ const LineCharts = () => (
       data={chartdata}
       index="month"
       categories={["Solar Growth Rate", "Wind Growth Rate"]}
-      colors={["emerald", "gray"]}
+      colors={["teal", "amber"]}
     //   valueFormatter={dataFormatter}
       yAxisWidth={40}
     />

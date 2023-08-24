@@ -27,7 +27,7 @@ const BarCharts = () => (
       data={chartdata2}
       index="year"
       categories={["Solar", "Wind"]}
-      colors={["teal", "lime",]}
+      colors={["teal", "amber",]}
       valueFormatter={dataFormatter}
       yAxisWidth={48}
     />

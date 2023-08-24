@@ -20,7 +20,7 @@ import {
 import { HiInformationCircle as InformationCircleIcon } from "react-icons/hi";
 import { useState } from "react";
 
-
+// 
 export const salesPeople = [
   {
     name: "Peter Doe",
@@ -75,6 +75,12 @@ const deltaTypes= {
   underperforming: "moderateDecrease",
 };
 
+const bgTypes= {
+  average: "bg-amber-300 text-white",
+  overperforming: "bg-green-300 text-white",
+  underperforming: "bg-red-300 text-white",
+}
+
 export default function SalesPeopleTable() {
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [selectedNames, setSelectedNames] = useState([]);
@@ -91,7 +97,7 @@ export default function SalesPeopleTable() {
           <Icon
             icon={InformationCircleIcon}
             variant="simple"
-            tooltip="Shows sales performance per employee"
+            tooltip="Explore Energy Generation Data"
           />
         </Flex>
       </div>
@@ -99,7 +105,7 @@ export default function SalesPeopleTable() {
         <MultiSelect
           className="max-w-full sm:max-w-xs"
           onValueChange={setSelectedNames}
-          placeholder="Select Salespeople..."
+          placeholder="Select Group"
         >
           {salesPeople.map((item) => (
             <MultiSelectItem key={item.name} value={item.name}>
@@ -107,7 +113,7 @@ export default function SalesPeopleTable() {
             </MultiSelectItem>
           ))}
         </MultiSelect>
-        <Select
+        {/* <Select
           className="max-w-full sm:max-w-xs"
           defaultValue="all"
           onValueChange={setSelectedStatus}
@@ -116,7 +122,7 @@ export default function SalesPeopleTable() {
           <SelectItem value="overperforming">Overperforming</SelectItem>
           <SelectItem value="average">Average</SelectItem>
           <SelectItem value="underperforming">Underperforming</SelectItem>
-        </Select>
+        </Select> */}
       </div>
       <Table className="mt-6">
         <TableHead>
@@ -143,7 +149,7 @@ export default function SalesPeopleTable() {
                 <TableCell className="text-right">{item.variance}</TableCell>
                 <TableCell className="text-right">{item.region}</TableCell>
                 <TableCell className="text-right">
-                  <BadgeDelta deltaType={deltaTypes[item.status]} size="xs">
+                  <BadgeDelta deltaType={deltaTypes[item.status]} className={`${bgTypes[item.status]}`} size="xs">
                     {item.status}
                   </BadgeDelta>
                 </TableCell>
