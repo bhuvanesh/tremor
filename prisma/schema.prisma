@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.VarChar(255)
+  content   String
+}
+
+model Inventory {
+  id             Int                @id @default(autoincrement())
+  groupName      String
+  companyName    String
+  projectName    String
+  capacityMW     Int
+  deviceId       String             @unique
+  deviceType     String
+  commissionDate DateTime
+  Registered     Boolean
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  energyGen      EnergyGeneration[]
+}
+
+model EnergyGeneration {
+  id        Int       @id @default(autoincrement())
+  device    Inventory @relation(fields: [devId], references: [deviceId])
+  devId     String    @unique
+  year      Int @unique
+  Jan       Int 
+  Feb       Int
+  Mar       Int
+  Apr       Int
+  May       Int
+  Jun       Int
+  Jul       Int
+  Aug       Int
+  Sep       Int
+  Oct       Int
+  Nov       Int
+  Dec       Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([devId])
+}
